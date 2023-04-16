@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.9.0 on win32)" generated="20230414 14:17:48.633" rpa="false" schemaversion="3">
+<suite id="s1" name="Test" source="C:\Users\KloverCloud\PycharmProjects\project\jsonfile\assinment\TaskTwo\robot\test.robot">
+<test id="s1-t1" name="Validate Add to Cart Functionality" line="11">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230414 14:17:48.879" level="INFO">Opening browser 'Chrome' to base url 'https://www.flipkart.com'.</msg>
+<status status="PASS" starttime="20230414 14:17:48.879" endtime="20230414 14:17:52.866"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 14:17:55.876" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230414 14:17:52.866" endtime="20230414 14:17:55.876"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[2]/div/div/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 14:17:55.879" level="INFO">Clicking element 'xpath=/html/body/div[2]/div/div/button'.</msg>
+<status status="PASS" starttime="20230414 14:17:55.876" endtime="20230414 14:17:55.926"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 14:17:57.932" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230414 14:17:55.927" endtime="20230414 14:17:57.932"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css=input[name='q']</arg>
+<arg>${SEARCH_TEXT}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230414 14:17:57.933" level="INFO">Typing text 'shoes' into text field 'css=input[name='q']'.</msg>
+<status status="PASS" starttime="20230414 14:17:57.933" endtime="20230414 14:17:58.025"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>css=button[type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230414 14:17:58.026" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<status status="PASS" starttime="20230414 14:17:58.026" endtime="20230414 14:17:58.072"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css=div[style*='display: block'] div:nth-child(2) a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 14:17:58.073" level="INFO">Clicking element 'css=div[style*='display: block'] div:nth-child(2) a'.</msg>
+<msg timestamp="20230414 14:17:58.289" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20230414 14:17:58.289" level="FAIL">Element with locator 'css=div[style*='display: block'] div:nth-child(2) a' not found.</msg>
+<status status="FAIL" starttime="20230414 14:17:58.073" endtime="20230414 14:17:58.313"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css=div[style*='display: block'] div:nth-child(3) a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.313" endtime="20230414 14:17:58.313"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>css=button._2AkmmA._2Npkh4._2MWPVK</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.314" endtime="20230414 14:17:58.314"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css=div[style*='display: block'] div:nth-child(2) a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.314" endtime="20230414 14:17:58.315"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css=div[style*='display: block'] div:nth-child(3) a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.315" endtime="20230414 14:17:58.315"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>css=button._2AkmmA._2Npkh4._2MWPVK</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.315" endtime="20230414 14:17:58.315"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>css=span.nav-cart-icon.nav-sprite</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.316" endtime="20230414 14:17:58.316"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=div[data-id^='CartItem']</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.316" endtime="20230414 14:17:58.316"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${product1_name}</var>
+<arg>css=div[data-id^='CartItem']:nth-child(1) a</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.317" endtime="20230414 14:17:58.317"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${product1_price}</var>
+<arg>css=div[data-id^='CartItem']:nth-child(1) div._30jeq3._1_WHN1</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.318" endtime="20230414 14:17:58.318"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${product2_name}</var>
+<arg>css=div[data-id^='CartItem']:nth-child(2) a</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.318" endtime="20230414 14:17:58.318"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${product2_price}</var>
+<arg>css=div[data-id^='CartItem']:nth-child(2) div._30jeq3._1_WHN1</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.318" endtime="20230414 14:17:58.318"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${product1_name}</arg>
+<arg>Expected Product 1 Name</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.318" endtime="20230414 14:17:58.318"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${product1_price}</arg>
+<arg>Expected Product 1 Price</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.319" endtime="20230414 14:17:58.319"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${product2_name}</arg>
+<arg>Expected Product 2 Name</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.319" endtime="20230414 14:17:58.319"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${product2_price}</arg>
+<arg>Expected Product 2 Price</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.319" endtime="20230414 14:17:58.319"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${total_sum}</var>
+<arg>int(${product1_price}.replace(',', '')) + int(${product2_price}.replace(',', ''))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.320" endtime="20230414 14:17:58.320"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${cart_total}</var>
+<arg>css=span._2Ru97g</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.320" endtime="20230414 14:17:58.320"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${cart_total}</arg>
+<arg>Rs. ${total_sum}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20230414 14:17:58.320" endtime="20230414 14:17:58.320"/>
+</kw>
+<status status="FAIL" starttime="20230414 14:17:48.878" endtime="20230414 14:17:58.320">Element with locator 'css=div[style*='display: block'] div:nth-child(2) a' not found.</status>
+</test>
+<status status="FAIL" starttime="20230414 14:17:48.634" endtime="20230414 14:17:58.323"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Test">Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
