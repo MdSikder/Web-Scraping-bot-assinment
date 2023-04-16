@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.common import NoSuchElementException
+from selenium.common import NoSuchElementException, TimeoutException, StaleElementReferenceException
 from selenium.webdriver import Keys
 import time
 import unittest
@@ -48,7 +48,8 @@ sort_dropdown.click()
 time.sleep(3)
 
 # Click on the second and third available products and add to cart
-product1 = driver.find_element(By.XPATH, "(//a[contains(@href,'/p/')])[2]")
+product1_name = driver.find_element(By.XPATH, "(//a[contains(@href,'/p/')])[5]").text
+product1 = driver.find_element(By.XPATH, "(//a[contains(@href,'/p/')])[5]")
 product1.click()
 time.sleep(5)
 
@@ -63,46 +64,116 @@ add_to_cart1 = WebDriverWait(driver, 20).until(
     EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Add to cart']"))
 )
 
-# try:
-#     cross = WebDriverWait(driver, 20).until(EC.text_to_be_present_in_element((By.XPATH, "//a[normalize-space()='10']"))
-#     cross.click()
-#     WebDriverWait(driver, 20).until(EC.text_to_be_present_in_element((By.XPATH, "//a[normalize-space()='10']"))
-#     # size.click()
-#     time.sleep(2)
-# except NoSuchElementException:
-#     print("An exception occurred")
+try:
+    size_loc = "//a[normalize-space()='10']"
+    size = WebDriverWait(driver, 3).until(
+        EC.element_to_be_clickable((By.XPATH, size_loc))
+    )
+    size.click()
+    time.sleep(4)
+except NoSuchElementException:
+    print("An exception occurred")
+    pass
 
+except TimeoutException:
+    print("TimeoutException exception occurred")
+    pass
+except StaleElementReferenceException:
+    print("StaleElementReferenceException exception occurred")
+    pass
 
 add_to_cart1.click()
-time.sleep(4)
-
+time.sleep(5)
 
 driver.switch_to.window(parent)
 time.sleep(5)
-product2 = driver.find_element(By.XPATH, "(//a[contains(@href,'/p/')])[3]")
+product2 = driver.find_element(By.XPATH, "(//a[contains(@href,'/p/')])[8]")
 product2.click()
-add_to_cart2 = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, "//button[text()='ADD TO CART']"))
+
+chld2 = driver.window_handles[2]
+driver.switch_to.window(chld2)
+driver.refresh()
+time.sleep(3)
+
+# add_to_cart2 = WebDriverWait(driver, 20).until(
+#     EC.element_to_be_clickable((By.XPATH, "//button[text()='ADD TO CART']"))
+# )
+time.sleep(3)
+
+try:
+    size_loc = "//a[normalize-space()='10']"
+    size = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable((By.XPATH, size_loc))
+    )
+    size.click()
+    time.sleep(8)
+except NoSuchElementException:
+    print("An exception occurred")
+
+except TimeoutException:
+    print("TimeoutException exception occurred")
+except StaleElementReferenceException:
+    print("StaleElementReferenceException exception occurred")
+
+driver.refresh()
+time.sleep(3)
+add_to_cart2 = WebDriverWait(driver, 20).until(
+    EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Add to cart']"))
 )
 add_to_cart2.click()
-# driver.back()
+time.sleep(5)
+driver.switch_to.window(parent)
+time.sleep(5)
 
-# # Go to cart and validate products and prices
-# cart = WebDriverWait(driver, 10).until(
-#     EC.element_to_be_clickable((By.XPATH, "//a[@class='_3ko_Ud']"))
-# )
-# cart.click()
-#
-# # Get all the product names and prices
-# product_names = driver.find_elements(By.XPATH, "//a[@class='_2Kn22P']")
-# product_prices = driver.find_elements(By.XPATH, "//div[@class='_30jeq3 _1_WHN1']")
-#
-# # Validate the correct products and prices are added to the cart
-# assert product_names[0].text == "Product 2 name"
-# assert product_prices[0].text == "Product 2 price"
-# assert product_names[1].text == "Product 3 name"
-# assert product_prices[1].text == "Product 3 price"
-#
-# # Get the total sum and validate
-# total_sum = driver.find_element(By.XPATH, "//div[@class='_3xFhiH']")
-# assert total_sum.text == "Total sum"
+# Go to cart and validate products and prices
+cart = WebDriverWait(driver, 10).until(
+    EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Cart']"))
+)
+cart.click()
+time.sleep(3)
+
+product_1_name = driver.find_element(By.XPATH,
+                                     "//*[@id='container']/div/div[2]/div/div/div[1]/div/div[3]/div/div[1]/div[1]/div[1]/a").text
+print(product_1_name)
+
+try:
+    assert product_1_name == product1_name
+    time.sleep(2)
+except AssertionError:
+    print("Product-1 name does not match")
+
+product_1_price = driver.find_element(By.XPATH,
+                                      "//*[@id='container']/div/div[2]/div/div/div[1]/div/div[3]/div/div[1]/div[1]/span[2]").text
+print(product_1_name, 'price is', product_1_price)
+
+product_2_name = driver.find_element(By.XPATH,
+                                     "//*[@id='container']/div/div[2]/div/div/div[1]/div/div[4]/div/div[1]/div[1]/div[1]/a").text
+print(product_2_name)
+
+try:
+    assert product_2_name == product_2_name
+    time.sleep(2)
+except AssertionError:
+    print("Product-2 name does not match")
+
+product_2_price = driver.find_element(By.XPATH,
+                                      "//*[@id='container']/div/div[2]/div/div/div[1]/div/div[4]/div/div[1]/div[1]/span[2]").text
+print(product_2_name, 'price is', product_2_price)
+
+price1 = [float(product_1_price.replace('₹', '').replace(',', ''))]
+price2 = [float(product_2_price.replace('₹', '').replace(',', ''))]
+
+both_price_sum = price1 + price2
+print("after sum prices are :", both_price_sum)
+
+total_price = driver.find_element(By.XPATH,
+                                  "//*[@id='container']/div/div[2]/div/div/div[2]/div[1]/div/div/div/div[4]/div/div[2]/span/div/div/div[2]/span").text
+print(total_price)
+total = [float(total_price.replace('₹', '').replace(',', ''))]
+time.sleep(2)
+
+try:
+    assert total == both_price_sum
+    time.sleep(2)
+except AssertionError:
+    print("AssertionError exception occurred")

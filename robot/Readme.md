@@ -1,3 +1,0 @@
-In this example implementation, the Open Browser to Flipkart keyword opens the Flipkart website in the specified browser, the Search for Shoes keyword searches for shoes on the website using the search textbox, the Sort Products by Price Low to High keyword sorts the products by price low to high, and the Validate Prices are in Ascending Order on Page 1 and Validate Prices are in Ascending Order on Page 2 keywords validate that the prices on the specified pages are in ascending order.
-
-Note that the implementation assumes the existence of certain elements on the Flipkart website, such as the search textbox and the sort option. You may need
